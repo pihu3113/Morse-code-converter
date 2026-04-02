@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Morse Code Converter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Custom title bar -->
+  <div class="titlebar">
+    <span class="titlebar-title">✦ Morse Code Converter</span>
+    <div class="titlebar-buttons">
+      <button class="tb-btn minimize" id="btn-minimize" title="Minimize">—</button>
+      <button class="tb-btn close" id="btn-close" title="Close">✕</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="dots-row">
+        <span class="dot pink"></span>
+        <span class="dot lavender"></span>
+        <span class="dot mint"></span>
+        <span class="dot peach"></span>
+      </div>
+      <h1 class="app-title">Morse Code Converter</h1>
+      <p class="app-subtitle">Translate text to morse & morse to text</p>
+    </div>
+
+    <!-- Mode toggle -->
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="mode-encode" onclick="setMode('encode')">
+        Text → Morse
+      </button>
+      <button class="mode-btn" id="mode-decode" onclick="setMode('decode')">
+        Morse → Text
+      </button>
+    </div>
+
+    <!-- Input area -->
+    <div class="card input-card">
+      <label class="card-label" id="input-label">Enter Text</label>
+      <textarea
+        id="input-area"
+        class="textarea"
+        placeholder="Type something here..."
+        rows="4"
+        oninput="convert()"
+      ></textarea>
+      <div class="card-footer">
+        <span class="char-count" id="char-count">0 characters</span>
+        <button class="icon-btn" onclick="clearInput()" title="Clear input">✕ Clear</button>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow-row">
+      <div class="arrow-badge" id="arrow-badge">↓</div>
+    </div>
+
+    <!-- Output area -->
+    <div class="card output-card">
+      <label class="card-label" id="output-label">Morse Code</label>
+      <div id="output-area" class="output-display">
+        <span class="placeholder-text">Output will appear here...</span>
+      </div>
+      <div class="card-footer">
+        <span class="hint-text" id="hint-text">· = dot &nbsp; – = dash &nbsp; / = word gap</span>
+        <button class="icon-btn copy-btn" onclick="copyOutput()" title="Copy output">
+          <span id="copy-label">⎘ Copy</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Reference table toggle -->
+    <div class="ref-toggle-row">
+      <button class="ref-toggle-btn" onclick="toggleRef()">
+        <span id="ref-toggle-label">▼ Show Morse Reference</span>
+      </button>
+    </div>
+
+    <!-- Reference table -->
+    <div class="ref-panel" id="ref-panel" style="display:none;">
+      <div class="ref-grid" id="ref-grid"></div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
